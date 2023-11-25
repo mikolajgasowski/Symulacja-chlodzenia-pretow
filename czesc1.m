@@ -132,41 +132,9 @@ grid on;
 %% Wyświetlanie tabeli
 Nr_pomiaru = (1:size(Nr_pomiaru, 1))';
 tableData = table(Nr_pomiaru, Tb_p0, Tw_p0, mw_p, t_p, Tb_p, Tw_p, euler_prosty_END(1,:)', euler_prosty_END(2,:)', euler_zlozony_END(1,:)', euler_zlozony_END(2,:)', ode45_END(:,1),ode45_END(:,2), 'VariableNames', {'Nr_pomiaru', 'Tb(0)', 'Tw(0)', 'Mw', 't', 'Tb(t)', 'Tw(t)', 'Tb(t) euler prosty', 'Tw(t) euler prosty', 'Tb(t) euler złożony', 'Tw(t) euler złożony', 'Tb(t) ODE45', 'Tw(t) ODE45'});
-fig = uifigure('Position', [100, 100, 1250, 250]);
-uit = uitable(fig, 'Data', tableData, 'ColumnName', tableData.Properties.VariableNames, 'Position', [0, 0, 1250, 250]);
+fig = uifigure('Position', [100, 100, 1250, 260]);
+uit = uitable(fig, 'Data', tableData, 'ColumnName', tableData.Properties.VariableNames, 'Position', [0, 0, 1250, 260]);
 s = uistyle('BackgroundColor', 'yellow');
 y = uistyle('BackgroundColor', 'red');
 addStyle(uit, y, 'column', 6:7);
 addStyle(uit, s, 'column', 8:13);
-%% Funkcje
-function dTb = dTb_dt(Tb, Tw, h, A, mb, cb)
-    dTb = (Tw - Tb) * (h * A) / (mb * cb);
-end
-
-function dTw = dTw_dt(Tb, Tw, h, A, mw, cw)
-    dTw = (Tb - Tw) * (h * A) / (mw * cw);
-end
-
-function [t_euler, T_euler] = euler_prosty(T, t, f, h)
-    n = length(t);
-    T_euler = zeros(2, n);
-    T_euler(:, 1) = T;
-    for i = 2:n
-        T_euler(:, i) = T_euler(:, i - 1) + h * f(t(i - 1), T_euler(:, i - 1));
-    end
-    t_euler = t;
-end
-
-function [t_euler_zlozony, T_euler_zlozony] = euler_zlozony(T, t, f, h)
-    n = length(t);
-    T_euler_zlozony = zeros(2, n);
-    T_euler_zlozony(:, 1) = T;
-    for i = 2:n
-        T_euler_zlozony(:, i) = T_euler_zlozony(:, i - 1) + h * f(t(i - 1) + h/2, T_euler_zlozony(:, i - 1) + (h/2) * f(t(i - 1), T_euler_zlozony(:, i - 1)));
-%       T_euler_zlozony(:, i) = T_euler_zlozony(:, i - 1) + h * f(t(i - 1), T_euler_zlozony(:, i - 1)) + (h/2) * f(t(i - 1), T_euler_zlozony(:, i - 1));
-    end
-    t_euler_zlozony = t;
-end
-
-
-

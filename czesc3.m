@@ -1,6 +1,3 @@
-% oceniamy wrazliwosc modelu na parametr h
-% przebiegi temperatur na kilku przypadkach
-% szereg obliczen, nie duzo kodu
 clc, clear, close all;
 %% Dane
 % dane pomiarowe wspolczynnika h
@@ -48,10 +45,8 @@ T_lagrange_END = zeros(2, length(Nr_pomiaru));
 T_kwadraty = zeros(2, length(Nr_pomiaru));
 T_splajny = zeros(2, length(Nr_pomiaru));
 
-% sgtitle('Symulacja rozkładu temperatury - wrażliwość modelu na metodę')
 
-% symulacja rozkładu temperatury - badanie wrażliwości modelu na metodę
-% interpolacji Lagrange'a
+% symulacja rozkładu temperatury - badanie wrażliwości modelu na metodę interpolacji Lagrange'a
 figure(1)
 for i=1:length(Nr_pomiaru)
     t_e = 0:k:t_p(i);
@@ -66,8 +61,7 @@ grid on;
 xlabel('Czas [t]');
 ylabel('Temperatura [^{\circ}C]');
 
-% symulacja rozkładu temperatury - badanie wrażliwości modelu na metodę
-% aproksymacji najmniejszych kwadratów
+% symulacja rozkładu temperatury - badanie wrażliwości modelu na metodę aproksymacji najmniejszych kwadratów
 figure(2)
 for i=1:length(Nr_pomiaru)
     t_e = 0:k:t_p(i);
@@ -82,8 +76,7 @@ grid on;
 xlabel('Czas [t]');
 ylabel('Temperatura [^{\circ}C]');
 
-% symulacja rozkładu temperatury - badanie wrażliwości modelu na metodę
-% interpolacji splajnami
+% symulacja rozkładu temperatury - badanie wrażliwości modelu na metodę interpolacji splajnami
 figure(3)
 for i=1:length(Nr_pomiaru)
     t_e = 0:k:t_p(i);

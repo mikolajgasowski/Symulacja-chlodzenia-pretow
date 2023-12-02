@@ -63,15 +63,6 @@ title('Interpolacja funkcjami sklejanymi');
 xlab = xlabel('\Delta T [^{\circ}C]');
 ylab = ylabel('h [W*m^{-2}]');
 %% Porównanie na jednym wykresie wartości interpolowanych z danymi pomiarowymi
-% figure(6)
-% subplot(4,1,1)
-% plot(delta_T, h, 'o-');
-% grid on;
-% title('Wyświetlenie danych pomiarowych');
-% xlab = xlabel('\Delta T [^{\circ}C]');
-% ylab = ylabel('h [W*m^{-2}]');
-% ylim([min(h) max(h)]);
-
 figure(6)
 sgtitle('Zestawienie wyznaczonych charakterystyk z danymi pomiarowymi')
 subplot(3,1,1);
@@ -103,20 +94,3 @@ grid on;
 title('Interpolacja funkcjami sklejanymi');
 xlab = xlabel('\Delta T [^{\circ}C]');
 ylab = ylabel('h [W*m^{-2}]');
-
-
-blad_bezwzgledny_lagrange = abs(h_splajn - h_lagrange);
-blad_bezwzgledny_aproksymacja = abs(h_splajn - h_kwadraty);
-sredni_blad_lagrange = mean(blad_bezwzgledny_lagrange);
-sredni_blad_aproksymacja = mean(blad_bezwzgledny_aproksymacja)
-
-
-
-
-
-
-
-
-
-
-

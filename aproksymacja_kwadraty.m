@@ -1,4 +1,4 @@
-function [h_kwadraty, blad_aproksymacji] = least_squares_interpolation(delta_T, h, T_interpolacja, n)
+function [h_kwadraty, blad_aproksymacji] = aproksymacja_kwadraty(delta_T, h, T_interpolacja, n)
     A = zeros(n + 1, n + 1);
     B = zeros(n + 1, 1);
     for i = 1:n + 1
